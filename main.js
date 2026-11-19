@@ -11,9 +11,20 @@ async function Init() {
         const sub = document.createElement("td");
         const prem = document.createElement("td");
         const paid = document.createElement("td");
+
         sub.textContent = adat.subscriber;
-        prem.textContent = adat.premium;
-        paid.textContent = adat.paid_total;
+        paid.textContent = "$" + adat.paid_total;
+
+        if (adat.premium == true){
+            prem.textContent = "✅";
+        }
+        else {
+            prem.textContent = "❌";
+        }
+
+        if (adat.paid_total > 800){
+            tr.classList.add("gold");
+        }
  
         tr.appendChild(sub);
         tr.appendChild(prem);
