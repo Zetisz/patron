@@ -34,13 +34,14 @@ function createTable() {
             alert.style.display = "block";
 
             if (prem.textContent == "✅") {
-                prem.textContent = "❌";
                 adat.premium = false;
             }
             else {
-                prem.textContent = "✅";
                 adat.premium = true;
             }
+
+            tbody.innerHTML = "";
+            createTable();
 
             setTimeout(() => {
                 alert.style.display = "none";
