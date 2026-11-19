@@ -1,10 +1,13 @@
 let adatok = [];
-const main = document.getElementsByTagName("main")[0];
 
 async function Init() {
     const response = await fetch("./patrons.json");
     adatok = await response.json();
 
+    createTable();
+}
+
+function createTable() {
     const tbody = document.getElementById("tbody");
     for (const adat of adatok) {
         const tr = document.createElement("tr");
@@ -25,11 +28,29 @@ async function Init() {
         if (adat.paid_total > 800){
             tr.classList.add("gold");
         }
+
+        prem.addEventListener('click', () => {
+            const alert = document.getElementById("alert");
+            alert.style.display = "block";
+
+            if (prem.textContent == "✅") {
+                prem.textContent = "❌";
+                adat.premium = false;
+            }
+            else {
+                prem.textContent = "✅";
+                adat.premium = true;
+            }
+
+            setTimeout(() => {
+                alert.style.display = "none";
+            }, 5000)
+        })
  
         tr.appendChild(sub);
         tr.appendChild(prem);
         tr.appendChild(paid);
-        tbody.appendChild(tr)
+        tbody.appendChild(tr);
     }
 }
 
