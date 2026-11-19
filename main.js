@@ -33,7 +33,7 @@ function createTable() {
             const alert = document.getElementById("alert");
             alert.style.display = "block";
 
-            if (prem.textContent == "✅") {
+            if (adat.premium == true) {
                 adat.premium = false;
             }
             else {
